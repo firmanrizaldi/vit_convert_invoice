@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- report qweb view -->
+        <report id="report_vit_convert_invoice_menu" string="Vit - Convert invoice"
+         model="vit.convert_invoice" report_type="qweb-pdf" 
+         file="vit.convert_invoice"  name="convert_invoice.vit_convert_invoice_report" />
+
+        <!-- document template -->
+        <template id="convert_invoice.vit_convert_invoice_report_document" >
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc.with_context({'lang': lang})"/>
+                <div class="page">
+                    <h2>
+                        Convert invoice: <span t-field="doc.name"/>
+                    </h2>
+                    <div class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Peminjam</strong>
+                            <p class="m-0" t-field="doc.peminjam" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Buka peminjam</strong>
+                            <p class="m-0" t-field="doc.buka_peminjam" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Jangka waktu</strong>
+                            <p class="m-0" t-field="doc.jangka_waktu" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tgl pencairan</strong>
+                            <p class="m-0" t-field="doc.tgl_pencairan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Periode peminjaman</strong>
+                            <p class="m-0" t-field="doc.periode_peminjaman" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Mulai pembayaran</strong>
+                            <p class="m-0" t-field="doc.mulai_pembayaran" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Bulan</strong>
+                            <p class="m-0" t-field="doc.bulan" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Periode</strong>
+                            <p class="m-0" t-field="doc.periode" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Saldo awal</strong>
+                            <p class="m-0" t-field="doc.saldo_awal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Pokok</strong>
+                            <p class="m-0" t-field="doc.pokok" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Bunga</strong>
+                            <p class="m-0" t-field="doc.bunga" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Saldo akhir</strong>
+                            <p class="m-0" t-field="doc.saldo_akhir" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status</strong>
+                            <p class="m-0" t-field="doc.status" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Tanggal</strong>
+                            <p class="m-0" t-field="doc.tanggal" />
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Is invoice</strong>
+                            <p class="m-0" t-field="doc.is_invoice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </t>
+        </template>
+
+        <!-- main template -->
+        <template id="convert_invoice.vit_convert_invoice_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="lang" t-value="doc.create_uid.lang"/>
+                    <t t-call="convert_invoice.vit_convert_invoice_report_document" />
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_vit_convert_invoice_tree" model="ir.ui.view">
+            <field name="name">vit_convert_invoice_tree</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Convert invoice">
+                    <field name="name" />
+                    <field name="peminjam" />
+                    <field name="buka_peminjam" />
+                    <field name="jangka_waktu" invisible="1"/>
+                    <field name="tgl_pencairan" invisible="1"/>
+                    <field name="periode_peminjaman" invisible="1"/>
+                    <field name="mulai_pembayaran" invisible="1"/>
+                    <field name="bulan" invisible="1"/>
+                    <field name="periode"/>
+                    <field name="saldo_awal" invisible="1"/>
+                    <field name="pokok" invisible="1"/>
+                    <field name="bunga" invisible="1"/>
+                    <field name="saldo_akhir" invisible="1"/>
+                    <field name="status" />
+                    <field name="tanggal" invisible="1"/>
+                    <field name="is_invoice" />
+                </tree>
+            </field>
+        </record>
+        <!-- form view -->
+        <record id="view_vit_convert_invoice_form" model="ir.ui.view">
+            <field name="name">vit_convert_invoice_form</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Convert invoice">
+                    <header>
+                        <button string="Convert" class="btn-primary" type="object" name="convert_invoice" /> <!-- Name= fungsi -->
+                        <!--button string="Confirm" type="object" name="action_confirm" states="draft" /-->
+                        <!--button string="Mark as Done" type="object" name="action_done" states="confirmed" /-->
+                        <!--button string="Reset to Draft" type="object" name="action_draft" states="confirmed,done" /-->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <!--button type="object" name="action_view_detail" class="oe_stat_button" icon="fa-pencil-square-o"-->
+                                <!--field name="detail_count" widget="statinfo" string="Detail(s)"/-->
+                                <!--field name="detail_ids" invisible="1"/-->
+                            <!--/button-->
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Convert invoice Name"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="peminjam" />
+                                <field name="buka_peminjam" />
+                                <field name="jangka_waktu" />
+                                <field name="tgl_pencairan" />
+                                <field name="periode_peminjaman" />
+                                <field name="mulai_pembayaran" />
+                                <field name="bulan" />
+                            </group>
+                            <group>
+                                <field name="periode" />
+                                <field name="saldo_awal" />
+                                <field name="pokok" />
+                                <field name="bunga" />
+                                <field name="saldo_akhir" />
+                                <field name="status" />
+                                <field name="tanggal" />
+                                <field name="is_invoice" />
+                            </group>
+                        </group>
+                        <notebook>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search -->
+        <record id="view_vit_convert_invoice_search" model="ir.ui.view">
+            <field name="name">vit_convert_invoice</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="arch" type="xml">
+                <search string="Convert invoice">
+
+                    <filter string="Name" name="filter_by_name" domain="[('name','=','')]" />
+                    <filter string="Peminjam" name="filter_by_peminjam" domain="[('peminjam','=','')]" />
+                    <filter string="Buka peminjam" name="filter_by_buka_peminjam" domain="[('buka_peminjam','=','')]" />
+                    <filter string="Jangka waktu" name="filter_by_jangka_waktu" domain="[('jangka_waktu','=','')]" />
+                    <filter string="Tgl pencairan" name="filter_by_tgl_pencairan" domain="[('tgl_pencairan','=','')]" />
+                    <filter string="Periode peminjaman" name="filter_by_periode_peminjaman" domain="[('periode_peminjaman','=','')]" />
+                    <filter string="Mulai pembayaran" name="filter_by_mulai_pembayaran" domain="[('mulai_pembayaran','=','')]" />
+                    <filter string="Bulan" name="filter_by_bulan" domain="[('bulan','=','')]" />
+                    <filter string="Periode" name="filter_by_periode" domain="[('periode','=','')]" />
+                    <filter string="Saldo awal" name="filter_by_saldo_awal" domain="[('saldo_awal','=','')]" />
+                    <filter string="Pokok" name="filter_by_pokok" domain="[('pokok','=','')]" />
+                    <filter string="Bunga" name="filter_by_bunga" domain="[('bunga','=','')]" />
+                    <filter string="Saldo akhir" name="filter_by_saldo_akhir" domain="[('saldo_akhir','=','')]" />
+                    <filter string="Status" name="filter_by_status" domain="[('status','=','')]" />
+                    <filter string="Tanggal" name="filter_by_tanggal" domain="[('tanggal','=','')]" />
+                    <filter string="Is invoice" name="filter_by_is_invoice" domain="[('is_invoice','=','')]" />
+                    <field name="name" select="True"/>
+                    <field name="peminjam" select="True"/>
+                    <field name="buka_peminjam" select="True"/>
+                    <field name="jangka_waktu" select="True"/>
+                    <field name="tgl_pencairan" select="True"/>
+                    <field name="periode_peminjaman" select="True"/>
+                    <field name="mulai_pembayaran" select="True"/>
+                    <field name="bulan" select="True"/>
+                    <field name="periode" select="True"/>
+                    <field name="saldo_awal" select="True"/>
+                    <field name="pokok" select="True"/>
+                    <field name="bunga" select="True"/>
+                    <field name="saldo_akhir" select="True"/>
+                    <field name="status" select="True"/>
+                    <field name="tanggal" select="True"/>
+                    <field name="is_invoice" select="True"/>
+                    <group string="Group By..">
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- kanban , to show image, please add image_small in the model -->
+        <record id="view_vit_convert_invoice_kanban" model="ir.ui.view" >
+            <field name="name">vit_convert_invoice</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0">
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="peminjam" />
+                    <field name="buka_peminjam" />
+                    <field name="jangka_waktu" />
+                    <field name="tgl_pencairan" />
+                    <field name="periode_peminjaman" />
+                    <field name="mulai_pembayaran" />
+                    <field name="bulan" />
+                    <field name="periode" />
+                    <field name="saldo_awal" />
+                    <field name="pokok" />
+                    <field name="bunga" />
+                    <field name="saldo_akhir" />
+                    <field name="status" />
+                    <field name="tanggal" />
+                    <field name="is_invoice" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open"><field name="name"/></a>
+                                    </h4>
+                                    <ul>
+                                        <li>
+                                            Field1: <field name="name"></field>
+                                        </li>
+                                        <li>
+                                            Field2: <field name="name"></field>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!-- calendar if a date field exists -->
+        <record id="view_vit_convert_invoice_cal" model="ir.ui.view">
+            <field name="name">vit_convert_invoice_cal</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="arch" type="xml">
+                <calendar string="Convert invoice" date_start="tanggal">
+                    <field name="name" />
+                </calendar>
+            </field>
+        </record>
+        <!-- graph -->
+        <record id="view_vit_convert_invoice_graph" model="ir.ui.view">
+            <field name="name">vit_convert_invoice</field>
+            <field name="model">vit.convert_invoice</field>
+            <field name="arch" type="xml">
+                <graph string="Convert invoice" type="bar">
+                </graph>
+            </field>
+        </record>
+        <!-- action window -->
+        <record id="action_vit_convert_invoice" model="ir.actions.act_window">
+            <field name="name">Convert invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.convert_invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Convert invoice
+                </p><p>
+                Click the Create button to add a new Convert invoice
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_vit_convert_invoice" name="Convert invoice" parent="convert_invoice_sub_menu" action="action_vit_convert_invoice" sequence="20"/>
+    </data>
+</odoo>

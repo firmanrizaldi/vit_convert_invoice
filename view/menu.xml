@@ -1,0 +1,6 @@
+<odoo>
+	<data>
+		<menuitem id="convert_invoice_top_menu" name="Convert invoice" sequence="20" web_icon="convert_invoice,static/description/icon.png" />
+		<menuitem id="convert_invoice_sub_menu" name="Convert invoice" sequence="40" parent="convert_invoice_top_menu" web_icon="convert_invoice,static/description/icon.png" />
+	</data>
+</odoo>
